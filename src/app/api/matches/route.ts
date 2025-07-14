@@ -13,8 +13,7 @@ export async function GET(req: NextRequest) {
     const { data, error } = await supabase
       .from("match")
       .select("datetime")
-      .order("datetime", { ascending: sort === "asc" })
-      .neq("datetime", null);
+      .order("datetime", { ascending: sort === "asc" });
 
     if (error)
       return NextResponse.json({ error: error.message }, { status: 500 });
